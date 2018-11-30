@@ -7,10 +7,37 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
 	<TabControl>
-		<TabItem Header="Lorem asdasdasdas fhaskd ">
+		<TabItem Header="Tours">
+			<Grid Margin="10">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="0.5*"/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<ComboBox Name="comboCountry" SelectedIndex="0" Margin="5"
+						  SelectionChanged="comboCountry_SelectionChanged">
+					<ComboBoxItem IsEnabled="False">Select country</ComboBoxItem>
+				</ComboBox>
+				<ComboBox Grid.Row="1" Name="comboCity" SelectedIndex="0" Margin="5" 
+						  Visibility="Hidden" SelectionChanged="comboCity_SelectionChanged">
+					<ComboBoxItem IsEnabled="False">Select city</ComboBoxItem>
+				</ComboBox>
+				<DataGrid Grid.Row="2" Name="datagridHotels" Grid.ColumnSpan="2" Margin="5"
+						  Visibility="Hidden"></DataGrid>
+			</Grid>
+		</TabItem>
+		<TabItem Header="Comments">
 
 		</TabItem>
-		<TabItem Header="1">
+		<TabItem Header="Registration">
+
+		</TabItem>
+		<TabItem Header="Admin Form">
 
 		</TabItem>
 	</TabControl>

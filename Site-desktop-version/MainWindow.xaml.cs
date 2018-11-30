@@ -24,5 +24,15 @@ namespace Site_desktop_version
 		{
 			InitializeComponent();
 		}
+
+		private void comboCountry_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			comboCity.Visibility = Visibility.Visible;
+		}
+
+		private void comboCity_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			datagridHotels.Visibility = Visibility.Visible;
+		}
 	}
 }
