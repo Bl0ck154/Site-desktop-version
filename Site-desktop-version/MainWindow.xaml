@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
 	<TabControl>
+		<TabControl.Resources>
+			<Style TargetType="Label">
+				<Setter Property="FontSize" Value="22"></Setter>
+				<Setter Property="FontWeight" Value="SemiBold"></Setter>
+			</Style>
+		</TabControl.Resources>
 		<TabItem Header="Tours">
 			<Grid Margin="10">
 				<Grid.ColumnDefinitions>
@@ -36,7 +42,31 @@
 
 		</TabItem>
 		<TabItem Header="Registration">
+			<Grid Margin="10">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Label FontSize="30">Registration Form</Label>
+				<Separator VerticalAlignment="Bottom" Grid.ColumnSpan="2"></Separator>
 
+				<Label Grid.Row="1">Login:</Label>
+				<TextBox Grid.Row="2" Name="txtLogin"></TextBox>
+
+				<Label Grid.Row="3">Password:</Label>
+				<TextBox Grid.Row="4" Name="txtPassword"></TextBox>
+
+				<Label Grid.Row="5">Email:</Label>
+				<TextBox Grid.Row="6" Name="txtEmail"></TextBox>
+
+				<Button Grid.Row="7" Margin="0 10 0 -5">Register</Button>
+			</Grid>
 		</TabItem>
 		<TabItem Header="Admin Form">
 
