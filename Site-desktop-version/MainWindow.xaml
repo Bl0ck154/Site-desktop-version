@@ -5,12 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Site_desktop_version"
         mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
         Title="MainWindow" Height="450" Width="800">
 	<TabControl>
 		<TabControl.Resources>
 			<Style TargetType="Label">
 				<Setter Property="FontSize" Value="22"></Setter>
 				<Setter Property="FontWeight" Value="SemiBold"></Setter>
+			</Style>
+			<Style TargetType="GroupBox" BasedOn="{StaticResource {x:Type GroupBox}}">
+				<Setter Property="Margin" Value="5"></Setter>
 			</Style>
 		</TabControl.Resources>
 		<TabItem Header="Tours">
@@ -82,8 +93,8 @@
 					<Grid>
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition/>
-							<ColumnDefinition Width="0.3*"/>
-							<ColumnDefinition/>
+							<ColumnDefinition Width="0.5*"/>
+							<ColumnDefinition Width="0.5*"/>
 						</Grid.ColumnDefinitions>
 						<Grid.RowDefinitions>
 							<RowDefinition/>
@@ -92,7 +103,7 @@
 						<DataGrid Grid.ColumnSpan="3" Name="datagridAddedCountries"></DataGrid>
 						<TextBox Name="txtAddCountryName" Grid.Row="1"></TextBox>
 						<Button Grid.Row="1" Grid.Column="1">Add</Button>
-						<Button Grid.Row="1" Grid.Column="2" Margin="100 0 0 0">Delete</Button>
+						<Button Grid.Row="1" Grid.Column="2">Delete</Button>
 					</Grid>
 				</GroupBox>
 				<GroupBox Grid.Row="0" Grid.Column="1" Header="Добавление городов">
