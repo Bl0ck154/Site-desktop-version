@@ -16,18 +16,19 @@
 				<Grid.RowDefinitions>
 					<RowDefinition Height="Auto"/>
 					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
 					<RowDefinition/>
 					<RowDefinition/>
 				</Grid.RowDefinitions>
-				<ComboBox Name="comboCountry" SelectedIndex="0" Margin="5"
-						  SelectionChanged="comboCountry_SelectionChanged">
-					<ComboBoxItem IsEnabled="False">Select country</ComboBoxItem>
+				<Label FontSize="30">Select Tours</Label>
+				<Separator VerticalAlignment="Bottom" Grid.ColumnSpan="2"></Separator>
+				<ComboBox Grid.Row="1" Name="comboCountry" Text="Select country" Margin="5" IsEditable="True" IsReadOnly="True"
+						 SelectionChanged="comboCountry_SelectionChanged">
 				</ComboBox>
-				<ComboBox Grid.Row="1" Name="comboCity" SelectedIndex="0" Margin="5" 
+				<ComboBox Grid.Row="2" Name="comboCity" Text="Select country" Margin="5" IsEditable="True" IsReadOnly="True"
 						  Visibility="Hidden" SelectionChanged="comboCity_SelectionChanged">
-					<ComboBoxItem IsEnabled="False">Select city</ComboBoxItem>
 				</ComboBox>
-				<DataGrid Grid.Row="2" Name="datagridHotels" Grid.ColumnSpan="2" Margin="5"
+				<DataGrid Grid.Row="3" Name="datagridHotels" Grid.ColumnSpan="2" Margin="5"
 						  Visibility="Hidden"></DataGrid>
 			</Grid>
 		</TabItem>
