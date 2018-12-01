@@ -97,5 +97,10 @@ namespace Site_desktop_version
 			responseJson = Request("delHotel&id=" + hotelId);
 			return responseJson == "ok";
 		}
+		public bool AddUser(string login, string password, string email)
+		{
+			responseJson = Request("addUser&login=" + login + "&password=" + password + "&email=" + email);
+			return responseJson == "ok";
+		}
 	}
 }

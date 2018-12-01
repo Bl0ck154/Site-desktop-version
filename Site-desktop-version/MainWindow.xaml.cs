@@ -153,5 +153,23 @@ namespace Site_desktop_version
 				LoadCities();
 			}
 		}
+
+		private void btnRegister_Click(object sender, RoutedEventArgs e)
+		{
+			if(string.IsNullOrWhiteSpace(txtLogin.Text) ||
+				string.IsNullOrWhiteSpace(txtEmail.Text) ||
+				string.IsNullOrWhiteSpace(txtPassword.Text))
+				return;
+
+			if(Api.AddUser(txtLogin.Text, txtPassword.Text, txtEmail.Text))
+			{
+				AddedUserMessage.Visibility = Visibility.Visible;
+			}
+		}
+
+		private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			AddedUserMessage.Visibility = Visibility.Hidden;
+		}
 	}
 }
