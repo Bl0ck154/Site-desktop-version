@@ -82,5 +82,20 @@ namespace Site_desktop_version
 			responseJson = Request("addCity&city=" + cityName + "&country=" + countryId);
 			return responseJson == "ok";
 		}
+		public bool RemoveCountry(int countryId)
+		{
+			responseJson = Request("delCountry&id=" + countryId);
+			return responseJson == "ok";
+		}
+		public bool RemoveCity(int cityId)
+		{
+			responseJson = Request("delCity&id=" + cityId);
+			return responseJson == "ok";
+		}
+		public bool RemoveHotel(int hotelId)
+		{
+			responseJson = Request("delHotel&id=" + hotelId);
+			return responseJson == "ok";
+		}
 	}
 }

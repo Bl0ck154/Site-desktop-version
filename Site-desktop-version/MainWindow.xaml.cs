@@ -50,6 +50,9 @@ namespace Site_desktop_version
 		}
 		void LoadCities()
 		{
+			if (countries == null)
+				LoadCountries();
+
 			cities = Api.getCities();
 			datagridAddedCities.ItemsSource = cities.Join(countries, 
 				c => c.countryId, s => s.id,
@@ -57,12 +60,20 @@ namespace Site_desktop_version
 		}
 		void LoadHotels()
 		{
-			var hotels = Api.getHotels();
-			datagridAddedHotels.ItemsSource = hotels.Join(cities,
+			if (countries == null)
+				LoadCountries();
+
+			if (cities == null)
+				LoadCities();
+
+			var hotels = Api.getHotels().Join(cities,
 				h => h.cityId, c => c.id,
 				(h, c) => new { h.id, h.hotelName, c.cityName, h.countryId }).Join(countries,
 				h => h.countryId, c => c.id,
 				(h, c) => new { h.id, contryCity = h.cityName + " : " + c.countryName, h.hotelName });
+
+			datagridAddedHotels.ItemsSource = hotels;
+			
 		}
 
 		private void comboCountry_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -92,6 +103,7 @@ namespace Site_desktop_version
 				if(Api.AddCountry(txtAddCountryName.Text))
 				{
 					LoadCountries();
+					txtAddCountryName.Clear();
 				}
 				else
 				{
@@ -103,7 +115,14 @@ namespace Site_desktop_version
 
 		private void btnDelCountry_Click(object sender, RoutedEventArgs e)
 		{
-
+			if(datagridAddedCountries.SelectedItems.Count > 0)
+			{
+				foreach (var item in datagridAddedCountries.SelectedItems)
+				{
+					Api.RemoveCountry((item as Country).id);
+				}
+				LoadCountries();
+			}
 		}
 
 		private void btnAddCity_Click(object sender, RoutedEventArgs e)
@@ -113,6 +132,7 @@ namespace Site_desktop_version
 				if (Api.AddCity(txtAddCityName.Text, (comboAddedCountries.SelectedItem as Country).id))
 				{
 					LoadCities();
+					txtAddCityName.Clear();
 				}
 				else
 				{
@@ -124,7 +144,14 @@ namespace Site_desktop_version
 
 		private void btnDelCity_Click(object sender, RoutedEventArgs e)
 		{
-
+			if (datagridAddedCities.SelectedItems.Count > 0)
+			{
+				foreach (var item in datagridAddedCities.SelectedItems)
+				{
+					Api.RemoveCity((item as City).id);
+				}
+				LoadCities();
+			}
 		}
 	}
 }
