@@ -77,5 +77,10 @@ namespace Site_desktop_version
 			responseJson = Request("addCountry&country=" + countryName);
 			return responseJson == "ok";
 		}
+		public bool AddCountry(string cityName, int countryId)
+		{
+			responseJson = Request("addCity&city=" + cityName + "&country=" + countryId);
+			return responseJson == "ok";
+		}
 	}
 }

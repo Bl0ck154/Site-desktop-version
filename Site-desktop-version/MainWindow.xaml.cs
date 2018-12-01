@@ -46,6 +46,7 @@ namespace Site_desktop_version
 			countries = Api.getCountries();
 			comboCountry.ItemsSource = countries;
 			datagridAddedCountries.ItemsSource = countries;
+			comboAddedCountries.ItemsSource = countries;
 		}
 		void LoadCities()
 		{
@@ -101,6 +102,27 @@ namespace Site_desktop_version
 		}
 
 		private void btnDelCountry_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void btnAddCity_Click(object sender, RoutedEventArgs e)
+		{
+			if (!string.IsNullOrWhiteSpace(txtAddCityName.Text) && comboAddedCountries.SelectedItem != null)
+			{
+				if (Api.AddCity(txtAddCityName.Text, (comboAddedCountries.SelectedItem as Country).id))
+				{
+					LoadCities();
+				}
+				else
+				{
+					var messageQueue = SnackbarCities.MessageQueue;
+					Task.Run(() => messageQueue.Enqueue("Error"));
+				}
+			}
+		}
+
+		private void btnDelCity_Click(object sender, RoutedEventArgs e)
 		{
 
 		}

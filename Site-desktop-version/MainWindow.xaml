@@ -135,8 +135,8 @@
 						<TextBox Name="txtAddCityName" Grid.Row="1" materialDesign:HintAssist.Hint="City"></TextBox>
 						<ComboBox Name="comboAddedCountries" Grid.Row="1" Grid.Column="1"
 								  materialDesign:HintAssist.Hint="Countries"></ComboBox>
-						<Button Grid.Row="1" Grid.Column="2">Add</Button>
-						<Button Grid.Row="1" Grid.Column="3">Delete</Button>
+						<Button Grid.Row="1" Grid.Column="2" Name="btnAddCity" Click="btnAddCity_Click">Add</Button>
+						<Button Grid.Row="1" Grid.Column="3" Name="btnDelCity" Click="btnDelCity_Click">Delete</Button>
 						<materialDesign:Snackbar Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
 								 MessageQueue="{materialDesign:MessageQueue}" Name="SnackbarCities" />
 					</Grid>
