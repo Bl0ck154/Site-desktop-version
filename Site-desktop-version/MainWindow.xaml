@@ -13,7 +13,7 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="800">
 	<TabControl Style="{DynamicResource ResourceKey=styleTabControl}">
 		<TabControl.Resources>
 			<Style TargetType="Label">
@@ -108,7 +108,8 @@
 							<RowDefinition/>
 							<RowDefinition Height="Auto"/>
 						</Grid.RowDefinitions>
-						<DataGrid Grid.ColumnSpan="3" Name="datagridAddedCountries"></DataGrid>
+						<DataGrid Grid.ColumnSpan="3" Name="datagridAddedCountries" Margin="0 -8 0 0"
+								  ColumnWidth="*" IsReadOnly="True"></DataGrid>
 						<TextBox Name="txtAddCountryName" Grid.Row="1" materialDesign:HintAssist.Hint="Country"></TextBox>
 						<Button Grid.Row="1" Grid.Column="1" Name="btnAddCountry" Click="btnAddCountry_Click">Add</Button>
 						<Button Grid.Row="1" Grid.Column="2" Name="btnDelCountry" Click="btnDelCountry_Click">Delete</Button>

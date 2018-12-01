@@ -48,9 +48,16 @@ namespace Site_desktop_version
 			responseJson = Request("getCountries");
 			return JsonConvert.DeserializeObject<List<Country>>(responseJson);
 		}
-		public List<City> getCities(int countryId)
+		public List<City> getCities(int countryId = -1)
 		{
-			responseJson = Request("getCities&country=" + countryId);
+			if(countryId == -1)
+			{
+				responseJson = Request("getCities");
+			}
+			else
+			{
+				responseJson = Request("getCities&country=" + countryId);
+			}
 			return JsonConvert.DeserializeObject<List<City>>(responseJson);
 		}
 		public List<Hotel> getHotels(int cityId)

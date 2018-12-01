@@ -10,7 +10,7 @@ namespace Site_desktop_version
 	{
 		public int id { get; set; }
 		public string cityName { get; set; }
-		public string countryId { get; set; }
+		public int countryId { get; set; }
 		public override string ToString()
 		{
 			return cityName;

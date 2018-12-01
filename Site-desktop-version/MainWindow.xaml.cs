@@ -24,6 +24,8 @@ namespace Site_desktop_version
 	public partial class MainWindow : Window
 	{
 		private API Api;
+		List<Country> countries;
+		List<City> cities;
 
 		public MainWindow()
 		{
@@ -34,14 +36,29 @@ namespace Site_desktop_version
 
 		private void MainWindow_Loaded(object sender, RoutedEventArgs e)
 		{
-			comboCountry.ItemsSource = Api.getCountries();
+			LoadCountries();
+			LoadCities();
+		}
+
+		void LoadCountries()
+		{
+			countries = Api.getCountries();
+			comboCountry.ItemsSource = countries;
+			datagridAddedCountries.ItemsSource = countries;
+		}
+		void LoadCities()
+		{
+			cities = Api.getCities();
+			datagridAddedCities.ItemsSource = cities;
 		}
 
 		private void comboCountry_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			if (comboCountry.SelectedItem != null)
 			{
-				comboCity.ItemsSource = Api.getCities((comboCountry.SelectedItem as Country).id);
+				int selectedCountryId = (comboCountry.SelectedItem as Country).id;
+				//	comboCity.ItemsSource = Api.getCities(selectedCountryId);
+				comboCity.ItemsSource = cities.Where(c => c.countryId == selectedCountryId);
 				comboCity.Visibility = Visibility.Visible;
 			}
 		}
