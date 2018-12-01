@@ -88,7 +88,15 @@ namespace Site_desktop_version
 		{
 			if(!string.IsNullOrWhiteSpace(txtAddCountryName.Text))
 			{
-				Api.AddCountry(txtAddCountryName.Text);
+				if(Api.AddCountry(txtAddCountryName.Text))
+				{
+					LoadCountries();
+				}
+				else
+				{
+					var messageQueue = SnackbarCountry.MessageQueue;
+					Task.Run(() => messageQueue.Enqueue("Error"));
+				}
 			}
 		}
 
