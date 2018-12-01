@@ -13,7 +13,7 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="MainWindow" Height="600" Width="800">
+        Title="MainWindow" Height="700" Width="800">
 	<TabControl Style="{DynamicResource ResourceKey=styleTabControl}">
 		<TabControl.Resources>
 			<Style TargetType="Label">
@@ -109,7 +109,8 @@
 							<RowDefinition Height="Auto"/>
 						</Grid.RowDefinitions>
 						<DataGrid Grid.ColumnSpan="3" Name="datagridAddedCountries" Margin="0 -8 0 0"
-								  ColumnWidth="*" IsReadOnly="True"></DataGrid>
+								  IsReadOnly="True" HeadersVisibility="None">
+						</DataGrid>
 						<TextBox Name="txtAddCountryName" Grid.Row="1" materialDesign:HintAssist.Hint="Country"></TextBox>
 						<Button Grid.Row="1" Grid.Column="1" Name="btnAddCountry" Click="btnAddCountry_Click">Add</Button>
 						<Button Grid.Row="1" Grid.Column="2" Name="btnDelCountry" Click="btnDelCountry_Click">Delete</Button>
@@ -127,7 +128,8 @@
 							<RowDefinition/>
 							<RowDefinition Height="Auto"/>
 						</Grid.RowDefinitions>
-						<DataGrid Grid.ColumnSpan="4" Name="datagridAddedCities"></DataGrid>
+						<DataGrid Grid.ColumnSpan="4" Name="datagridAddedCities" Margin="0 -8 0 0"
+								  IsReadOnly="True" HeadersVisibility="None"></DataGrid>
 						<TextBox Name="txtAddCityName" Grid.Row="1" materialDesign:HintAssist.Hint="City"></TextBox>
 						<ComboBox Name="comboAddedCountries" Grid.Row="1" Grid.Column="1"
 								  materialDesign:HintAssist.Hint="Countries"></ComboBox>
@@ -149,7 +151,8 @@
 							<RowDefinition Height="Auto"/>
 							<RowDefinition Height="Auto"/>
 						</Grid.RowDefinitions>
-						<DataGrid Grid.ColumnSpan="4" Name="datagridAddedHotels"></DataGrid>
+						<DataGrid Grid.ColumnSpan="4" Name="datagridAddedHotels" Margin="0 -8 0 0"
+								  IsReadOnly="True" HeadersVisibility="None"></DataGrid>
 						<ComboBox Name="comboCityCountry" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4"
 								materialDesign:HintAssist.Hint="Countries"></ComboBox>
 						<TextBox Name="txtHotelName" Grid.Row="2" Grid.Column="0" materialDesign:HintAssist.Hint="Hotel"></TextBox>

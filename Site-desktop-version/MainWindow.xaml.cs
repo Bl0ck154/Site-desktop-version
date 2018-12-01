@@ -38,6 +38,7 @@ namespace Site_desktop_version
 		{
 			LoadCountries();
 			LoadCities();
+			LoadHotels();
 		}
 
 		void LoadCountries()
@@ -49,7 +50,18 @@ namespace Site_desktop_version
 		void LoadCities()
 		{
 			cities = Api.getCities();
-			datagridAddedCities.ItemsSource = cities;
+			datagridAddedCities.ItemsSource = cities.Join(countries, 
+				c => c.countryId, s => s.id,
+				(c, s) => new { c.id, c.cityName, s.countryName });
+		}
+		void LoadHotels()
+		{
+			var hotels = Api.getHotels();
+			datagridAddedHotels.ItemsSource = hotels.Join(cities,
+				h => h.cityId, c => c.id,
+				(h, c) => new { h.id, h.hotelName, c.cityName, h.countryId }).Join(countries,
+				h => h.countryId, c => c.id,
+				(h, c) => new { h.id, contryCity = h.cityName + " : " + c.countryName, h.hotelName });
 		}
 
 		private void comboCountry_SelectionChanged(object sender, SelectionChangedEventArgs e)
