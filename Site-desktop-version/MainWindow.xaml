@@ -14,7 +14,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         Title="MainWindow" Height="450" Width="800">
-	<TabControl>
+	<TabControl Style="{DynamicResource ResourceKey=styleTabControl}">
 		<TabControl.Resources>
 			<Style TargetType="Label">
 				<Setter Property="FontSize" Value="22"></Setter>
@@ -24,7 +24,7 @@
 				<Setter Property="Margin" Value="5"></Setter>
 			</Style>
 		</TabControl.Resources>
-		<TabItem Header="Tours">
+		<TabItem Header="Tours" Style="{DynamicResource ResourceKey=styleTabItemLeft}">
 			<Grid Margin="10">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="0.5*"/>
@@ -39,20 +39,20 @@
 				</Grid.RowDefinitions>
 				<Label FontSize="30">Select Tours</Label>
 				<Separator VerticalAlignment="Bottom" Grid.ColumnSpan="2"></Separator>
-				<ComboBox Grid.Row="1" Name="comboCountry" Text="Select country" Margin="5" IsEditable="True" IsReadOnly="True"
+				<ComboBox Grid.Row="1" Name="comboCountry" materialDesign:HintAssist.Hint="Select country" Margin="5"
 						 SelectionChanged="comboCountry_SelectionChanged">
 				</ComboBox>
-				<ComboBox Grid.Row="2" Name="comboCity" Text="Select country" Margin="5" IsEditable="True" IsReadOnly="True"
+				<ComboBox Grid.Row="2" Name="comboCity" materialDesign:HintAssist.Hint="Select city" Margin="5"
 						  Visibility="Hidden" SelectionChanged="comboCity_SelectionChanged">
 				</ComboBox>
 				<DataGrid Grid.Row="3" Name="datagridHotels" Grid.ColumnSpan="2" Margin="5"
 						  Visibility="Hidden"></DataGrid>
 			</Grid>
 		</TabItem>
-		<TabItem Header="Comments">
+		<TabItem Header="Comments" Style="{DynamicResource ResourceKey=styleTabItemDefault}">
 
 		</TabItem>
-		<TabItem Header="Registration">
+		<TabItem Header="Registration" Style="{DynamicResource ResourceKey=styleTabItemDefault}">
 			<Grid Margin="10">
 				<Grid.RowDefinitions>
 					<RowDefinition Height="Auto"/>
@@ -79,7 +79,7 @@
 				<Button Grid.Row="7" Margin="0 10 0 -5">Register</Button>
 			</Grid>
 		</TabItem>
-		<TabItem Header="Admin Form">
+		<TabItem Header="Admin Form" Style="{DynamicResource ResourceKey=styleTabItemRight}">
 			<Grid>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition/>
@@ -101,7 +101,7 @@
 							<RowDefinition Height="Auto"/>
 						</Grid.RowDefinitions>
 						<DataGrid Grid.ColumnSpan="3" Name="datagridAddedCountries"></DataGrid>
-						<TextBox Name="txtAddCountryName" Grid.Row="1"></TextBox>
+						<TextBox Name="txtAddCountryName" Grid.Row="1" materialDesign:HintAssist.Hint="Country"></TextBox>
 						<Button Grid.Row="1" Grid.Column="1">Add</Button>
 						<Button Grid.Row="1" Grid.Column="2">Delete</Button>
 					</Grid>
@@ -119,9 +119,9 @@
 							<RowDefinition Height="Auto"/>
 						</Grid.RowDefinitions>
 						<DataGrid Grid.ColumnSpan="4" Name="datagridAddedCities"></DataGrid>
-						<TextBox Name="txtAddCityName" Grid.Row="1"></TextBox>
+						<TextBox Name="txtAddCityName" Grid.Row="1" materialDesign:HintAssist.Hint="City"></TextBox>
 						<ComboBox Name="comboAddedCountries" Grid.Row="1" Grid.Column="1"
-								  IsReadOnly="True" IsEditable="True" Text="Countries"></ComboBox>
+								  materialDesign:HintAssist.Hint="Countries"></ComboBox>
 						<Button Grid.Row="1" Grid.Column="2">Add</Button>
 						<Button Grid.Row="1" Grid.Column="3">Delete</Button>
 					</Grid>
@@ -142,12 +142,12 @@
 						</Grid.RowDefinitions>
 						<DataGrid Grid.ColumnSpan="4" Name="datagridAddedHotels"></DataGrid>
 						<ComboBox Name="comboCityCountry" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4"
-								  IsReadOnly="True" IsEditable="True" Text="Countries"></ComboBox>
-						<TextBox Name="txtHotelName" Grid.Row="2" Grid.Column="0"></TextBox>
-						<TextBox Name="txtHotelCost" Grid.Row="2" Grid.Column="1"></TextBox>
+								materialDesign:HintAssist.Hint="Countries"></ComboBox>
+						<TextBox Name="txtHotelName" Grid.Row="2" Grid.Column="0" materialDesign:HintAssist.Hint="Hotel"></TextBox>
+						<TextBox Name="txtHotelCost" Grid.Row="2" Grid.Column="1" materialDesign:HintAssist.Hint="Cost"></TextBox>
 						<Label Grid.Row="2" Grid.Column="2" FontSize="12">Звезды:</Label>
-						<TextBox Name="txtHotelStars" Grid.Row="2" Grid.Column="3"></TextBox>
-						<TextBox Name="txtHotelDescription" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True"></TextBox>
+						<TextBox Name="txtHotelStars" Grid.Row="2" Grid.Column="3" materialDesign:HintAssist.Hint="Stars"></TextBox>
+						<TextBox Name="txtHotelDescription" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" materialDesign:HintAssist.Hint="Description"></TextBox>
 						<Button Grid.Row="4" Grid.Column="2">Add</Button>
 						<Button Grid.Row="4" Grid.Column="3">Delete</Button>
 					</Grid>
@@ -159,7 +159,7 @@
 							<RowDefinition/>
 							<RowDefinition/>
 						</Grid.RowDefinitions>
-						<ComboBox Grid.Row="0" Name="comboHotels"></ComboBox>
+						<ComboBox Grid.Row="0" Name="comboHotels" materialDesign:HintAssist.Hint="Hotels"></ComboBox>
 						<TextBox Grid.Row="1" Name="txtAddImg" IsReadOnly="True"></TextBox>
 						<Button Grid.Row="1" HorizontalAlignment="Right">Choose Image</Button>
 						<Button Grid.Row="2">Add</Button>

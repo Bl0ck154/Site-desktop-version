@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace Site_desktop_version
 {
-	class Country
+    class City
 	{
 		public int id { get; set; }
-		public string countryName { get; set; }
+		public string cityName { get; set; }
+		public string countryId { get; set; }
 		public override string ToString()
 		{
-			return countryName;
+			return cityName;
 		}
 	}
 }
