@@ -34,8 +34,7 @@
 					<RowDefinition Height="Auto"/>
 					<RowDefinition Height="Auto"/>
 					<RowDefinition Height="Auto"/>
-					<RowDefinition/>
-					<RowDefinition/>
+					<RowDefinition Height="Auto"/>
 				</Grid.RowDefinitions>
 				<Label FontSize="30">Select Tours</Label>
 				<Separator VerticalAlignment="Bottom" Grid.ColumnSpan="2"></Separator>
@@ -46,7 +45,16 @@
 						  Visibility="Hidden" SelectionChanged="comboCity_SelectionChanged">
 				</ComboBox>
 				<DataGrid Grid.Row="3" Name="datagridHotels" Grid.ColumnSpan="2" Margin="5"
-						  Visibility="Hidden"></DataGrid>
+						  Visibility="Hidden" AutoGenerateColumns="False" ColumnWidth="*" IsReadOnly="True">
+					<DataGrid.Columns>
+						<DataGridTextColumn Header="Hotel" Binding="{Binding hotelName}"/>
+						<DataGridTextColumn Header="Country"  Binding="{Binding ElementName=comboCountry, Path=SelectedItem}"/>
+						<DataGridTextColumn Header="City"  Binding="{Binding ElementName=comboCity, Path=SelectedItem}"/>
+						<DataGridTextColumn Header="Price"  Binding="{Binding cost}"/>
+						<DataGridTextColumn Header="Stars"  Binding="{Binding stars}"/>
+						<DataGridTextColumn Header="Link" ></DataGridTextColumn>
+					</DataGrid.Columns>
+				</DataGrid>
 			</Grid>
 		</TabItem>
 		<TabItem Header="Comments" Style="{DynamicResource ResourceKey=styleTabItemDefault}">
@@ -102,8 +110,8 @@
 						</Grid.RowDefinitions>
 						<DataGrid Grid.ColumnSpan="3" Name="datagridAddedCountries"></DataGrid>
 						<TextBox Name="txtAddCountryName" Grid.Row="1" materialDesign:HintAssist.Hint="Country"></TextBox>
-						<Button Grid.Row="1" Grid.Column="1">Add</Button>
-						<Button Grid.Row="1" Grid.Column="2">Delete</Button>
+						<Button Grid.Row="1" Grid.Column="1" Name="btnAddCountry" Click="btnAddCountry_Click">Add</Button>
+						<Button Grid.Row="1" Grid.Column="2" Name="btnDelCountry" Click="btnDelCountry_Click">Delete</Button>
 					</Grid>
 				</GroupBox>
 				<GroupBox Grid.Row="0" Grid.Column="1" Header="Добавление городов">

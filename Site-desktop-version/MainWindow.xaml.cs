@@ -39,19 +39,33 @@ namespace Site_desktop_version
 
 		private void comboCountry_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			if ((sender as ComboBox).SelectedIndex == 0)
-				return;
-
-			comboCity.ItemsSource = Api.getCities((comboCountry.SelectedItem as Country).id);
-			comboCity.Visibility = Visibility.Visible;
+			if (comboCountry.SelectedItem != null)
+			{
+				comboCity.ItemsSource = Api.getCities((comboCountry.SelectedItem as Country).id);
+				comboCity.Visibility = Visibility.Visible;
+			}
 		}
 
 		private void comboCity_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			if ((sender as ComboBox).SelectedIndex == 0)
-				return;
+			if (comboCity.SelectedItem != null)
+			{
+				datagridHotels.ItemsSource = Api.getHotels((comboCity.SelectedItem as City).id);
+				datagridHotels.Visibility = Visibility.Visible;
+			}
+		}
 
-			datagridHotels.Visibility = Visibility.Visible;
+		private void btnAddCountry_Click(object sender, RoutedEventArgs e)
+		{
+			if(!string.IsNullOrWhiteSpace(txtAddCountryName.Text))
+			{
+				Api.AddCountry(txtAddCountryName.Text);
+			}
+		}
+
+		private void btnDelCountry_Click(object sender, RoutedEventArgs e)
+		{
+
 		}
 	}
 }

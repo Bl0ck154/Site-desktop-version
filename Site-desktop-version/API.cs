@@ -53,5 +53,15 @@ namespace Site_desktop_version
 			responseJson = Request("getCities&country=" + countryId);
 			return JsonConvert.DeserializeObject<List<City>>(responseJson);
 		}
+		public List<Hotel> getHotels(int cityId)
+		{
+			responseJson = Request("getHotels&city=" + cityId);
+			return JsonConvert.DeserializeObject<List<Hotel>>(responseJson);
+		}
+		public bool AddCountry(string countryName)
+		{
+			responseJson = Request("addCountry&country=" + countryName);
+			return responseJson == "ok";
+		}
 	}
 }
