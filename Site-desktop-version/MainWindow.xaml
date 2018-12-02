@@ -52,7 +52,7 @@
 						<DataGridTextColumn Header="City"  Binding="{Binding ElementName=comboCity, Path=SelectedItem}"/>
 						<DataGridTextColumn Header="Price"  Binding="{Binding cost}"/>
 						<DataGridTextColumn Header="Stars"  Binding="{Binding stars}"/>
-						<DataGridTextColumn Header="Link" ></DataGridTextColumn>
+						<DataGridTextColumn Header="Info"  Binding="{Binding info}"/>
 					</DataGrid.Columns>
 				</DataGrid>
 			</Grid>
