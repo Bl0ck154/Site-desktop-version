@@ -172,12 +172,11 @@ namespace Site_desktop_version
 			AddedUserMessage.Visibility = Visibility.Hidden;
 		}
 
-		private void btnDelHotel_Click(object sender, RoutedEventArgs e)
+		private void btnAddHotel_Click(object sender, RoutedEventArgs e)
 		{
-
 		}
 
-		private void btnAddHotel_Click(object sender, RoutedEventArgs e)
+		private void btnDelHotel_Click(object sender, RoutedEventArgs e)
 		{
 			if (datagridAddedHotels.SelectedItems.Count > 0)
 			{
