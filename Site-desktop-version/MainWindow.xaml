@@ -182,8 +182,8 @@
 						<Label Grid.Row="2" Grid.Column="2" FontSize="12">Звезды:</Label>
 						<TextBox Name="txtHotelStars" Grid.Row="2" Grid.Column="3" materialDesign:HintAssist.Hint="Stars"></TextBox>
 						<TextBox Name="txtHotelDescription" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" materialDesign:HintAssist.Hint="Description"></TextBox>
-						<Button Grid.Row="4" Grid.Column="2">Add</Button>
-						<Button Grid.Row="4" Grid.Column="3">Delete</Button>
+						<Button Name="btnAddHotel" Grid.Row="4" Grid.Column="2" Click="btnAddHotel_Click">Add</Button>
+						<Button Name="btnDelHotel" Grid.Row="4" Grid.Column="3" Click="btnDelHotel_Click">Delete</Button>
 					</Grid>
 				</GroupBox>
 				<GroupBox Grid.Row="1" Grid.Column="1" Header="Добавление картинок">
