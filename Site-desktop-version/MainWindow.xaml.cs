@@ -26,6 +26,7 @@ namespace Site_desktop_version
 		private API Api;
 		List<Country> countries;
 		List<City> cities;
+		List<CityCountry> cityCountries;
 
 		public MainWindow()
 		{
@@ -54,7 +55,7 @@ namespace Site_desktop_version
 				LoadCountries();
 
 			cities = Api.getCities();
-			datagridAddedCities.ItemsSource = cities.Join(countries, 
+			datagridAddedCities.ItemsSource = cities.Join(countries,
 				c => c.countryId, s => s.id,
 				(c, s) => new { c.id, c.cityName, s.countryName });
 		}
@@ -65,15 +66,18 @@ namespace Site_desktop_version
 
 			if (cities == null)
 				LoadCities();
-
+			
 			var hotels = Api.getHotels().Join(cities,
 				h => h.cityId, c => c.id,
 				(h, c) => new { h.id, h.hotelName, c.cityName, h.countryId }).Join(countries,
 				h => h.countryId, c => c.id,
-				(h, c) => new { h.id, contryCity = h.cityName + " : " + c.countryName, h.hotelName });
+				(h, c) => new { h.id, cityCountry = new CityCountry() { id = h.id, cityName = h.cityName, countryId = c.id, countryName = c.countryName }, h.hotelName });
+
+			cityCountries = hotels.Select(c => c.cityCountry).ToList();
 
 			datagridAddedHotels.ItemsSource = hotels;
-			
+
+			comboCityCountry.ItemsSource = cityCountries;
 		}
 
 		private void comboCountry_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -174,6 +178,16 @@ namespace Site_desktop_version
 
 		private void btnAddHotel_Click(object sender, RoutedEventArgs e)
 		{
+			CityCountry selected = comboCityCountry.SelectedItem as CityCountry;
+			if (selected != null && !string.IsNullOrWhiteSpace(txtHotelName.Text))
+			{
+				bool result = Api.AddHotel(txtHotelName.Text, selected.id, selected.countryId,
+					txtHotelStars.Text, txtHotelCost.Text, txtHotelDescription.Text);
+				if(result)
+				{
+					LoadHotels();
+				}
+			}
 		}
 
 		private void btnDelHotel_Click(object sender, RoutedEventArgs e)

@@ -76,6 +76,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="City.cs" />
+    <Compile Include="CityCountry.cs" />
     <Compile Include="Country.cs" />
     <Compile Include="Hotel.cs" />
     <Compile Include="MainWindow.xaml.cs">
