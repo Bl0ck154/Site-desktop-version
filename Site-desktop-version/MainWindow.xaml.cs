@@ -73,9 +73,11 @@ namespace Site_desktop_version
 				h => h.countryId, c => c.id,
 				(h, c) => new { h.id, cityCountry = new CityCountry() { id = h.id, cityName = h.cityName, countryId = c.id, countryName = c.countryName }, h.hotelName });
 
-			cityCountries = hotels.Select(c => c.cityCountry).ToList();
-
 			datagridAddedHotels.ItemsSource = hotels;
+
+			cityCountries = cities.Join(countries,
+				c => c.countryId, s => s.id,
+				(c, s) => new CityCountry(){ id = c.id, cityName = c.cityName, countryId = s.id, countryName = s.countryName }).ToList();
 
 			comboCityCountry.ItemsSource = cityCountries;
 		}
@@ -186,6 +188,10 @@ namespace Site_desktop_version
 				if(result)
 				{
 					LoadHotels();
+					txtHotelName.Clear();
+					txtHotelStars.Clear();
+					txtHotelCost.Clear();
+					txtHotelDescription.Clear();
 				}
 			}
 		}
